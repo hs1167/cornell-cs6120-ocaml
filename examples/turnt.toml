@@ -1,0 +1,2 @@
+# Vérification de l'infrastructure uniquement. Le programme officiel affiche 3.
+command = """bash -o pipefail -c 'dune exec --root .. cs6120 -- json "$1" | brili' -- {filename}"""

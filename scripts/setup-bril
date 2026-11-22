@@ -1,0 +1,30 @@
+#!/usr/bin/env bash
+set -euo pipefail
+cd -- "$(dirname -- "$0")/.."
+source ./env.sh
+[[ $(uname -sm) == 'Linux x86_64' ]] || { echo 'Ce binaire Deno cible Linux x86_64.' >&2; exit 1; }
+mkdir -p .tools/bin
+rev=1c8604d22a2655ca0d5bdaf4bb70390b5ca23527
+stage=$(mktemp -d)
+trap 'rm -rf -- "$stage"' EXIT
+if [[ ! -d .tools/bril ]]; then
+  curl -fsSL --retry 2 "https://codeload.github.com/sampsyo/bril/tar.gz/$rev" -o "$stage/bril.tar.gz"
+  echo "b6bf74011818f87d4cbe89e4a5d3bc618274ecb18d3de01717c2bae37da0683a  $stage/bril.tar.gz" | sha256sum -c -
+  tar -xzf "$stage/bril.tar.gz" -C "$stage"
+  mv "$stage/bril-$rev" .tools/bril
+fi
+if [[ ! -x .tools/bin/deno ]]; then
+  curl -fsSL --retry 2 'https://registry.npmjs.org/@deno/linux-x64-glibc/-/linux-x64-glibc-2.5.6.tgz' -o "$stage/deno.tgz"
+  echo "69872df55a75460291db25bd8725864c82f410dd0c82a681b83d1f6e7407ca07787ed49f77f696701077fa7ece4d45ff60d592c5890e30b57537c4565028f88f  $stage/deno.tgz" | sha512sum -c -
+  tar -xzf "$stage/deno.tgz" -C "$stage" package/deno
+  install -m 755 "$stage/package/deno" .tools/bin/deno
+fi
+if [[ ! -x .tools/venv/bin/pip ]]; then
+  /usr/bin/python3 -m venv .tools/venv
+fi
+pip=(.tools/venv/bin/python -m pip --isolated --disable-pip-version-check)
+"${pip[@]}" install --no-cache-dir flit_core==3.12.0 lark-parser==0.12.0 click==8.2.1 turnt==1.12.0
+"${pip[@]}" install --no-cache-dir --no-build-isolation --no-deps .tools/bril/bril-txt .tools/bril/brench
+ln -sfn ../../scripts/brili .tools/bin/brili
+.tools/bin/deno --version
+.tools/venv/bin/python -c 'from importlib.metadata import version; print("Turnt", version("turnt"))'

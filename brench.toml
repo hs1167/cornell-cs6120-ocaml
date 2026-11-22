@@ -1,0 +1,10 @@
+# Depuis la racine, après « source ./env.sh » et « dune build ».
+extract = 'total_dyn_inst: (\d+)'
+benchmarks = '.tools/bril/benchmarks/core/*.bril'
+
+[runs.reference]
+pipeline = ["bril2json", "brili -p {args}"]
+
+# Comparaison facultative de L3, à activer une fois les commandes raccordées.
+# [runs.lvn_tdce]
+# pipeline = ["bril2json", "cs6120 lvn", "cs6120 tdce", "brili -p {args}"]

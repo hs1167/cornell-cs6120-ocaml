@@ -1,0 +1,2 @@
+# Exécute le benchmark et compare stdout au .out de même nom.
+command = """bash -o pipefail -c 'bril2json < "$0" | brili "$@"' "{filename}" {args}"""

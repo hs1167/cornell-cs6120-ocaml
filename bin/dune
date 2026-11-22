@@ -1,0 +1,4 @@
+(executable
+ (name main)
+ (public_name cs6120)
+ (libraries support lessons yojson))

@@ -1,0 +1,8 @@
+@main {
+  ret;
+.after:
+  x: int = const 1;
+  jmp .exit;
+.exit:
+  ret;
+}

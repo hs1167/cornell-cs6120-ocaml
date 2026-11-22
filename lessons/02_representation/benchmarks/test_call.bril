@@ -1,0 +1,10 @@
+@helper {
+  ret;
+}
+
+@main {
+  x: int = const 1;
+  call @helper;
+  y: int = add x x;
+  ret;
+}

@@ -1,0 +1,3 @@
+# Turnt compare la sortie de la commande avec votre propre instantané .out.
+# Raccorder « mini » dans la CLI ou remplacer la commande par celle de votre outil.
+command = "dune exec --root ../.. cs6120 -- mini < {filename}"

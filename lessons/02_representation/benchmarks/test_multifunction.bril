@@ -1,0 +1,22 @@
+@helper {
+    a: int = const 2;
+    b: int = const 3;
+    c: int = add a b;
+    ret;
+}
+
+@main {
+    x: int = const 4;
+    test: bool = const true;
+    br test .yes .no;
+
+.yes:
+    print x;
+    jmp .done;
+
+.no:
+    print x;
+
+.done:
+    ret;
+}

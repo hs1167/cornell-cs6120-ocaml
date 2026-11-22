@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+set -eu
+root=$(cd -- "$(dirname -- "$(readlink -f -- "$0")")/.." && pwd -P)
+export DENO_DIR="$root/.tools/deno-cache" DENO_NO_UPDATE_CHECK=1
+exec "$root/.tools/bin/deno" run --no-config --no-lock --cached-only "$root/.tools/bril/brili.ts" "$@"

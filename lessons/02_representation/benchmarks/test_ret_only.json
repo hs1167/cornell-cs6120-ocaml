@@ -1,0 +1,12 @@
+{
+  "functions": [
+    {
+      "instrs": [
+        {
+          "op": "ret"
+        }
+      ],
+      "name": "main"
+    }
+  ]
+}

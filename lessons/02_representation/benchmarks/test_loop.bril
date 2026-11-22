@@ -1,0 +1,16 @@
+@main {
+    i: int = const 3;
+    acc: int = const 1;
+.cond:
+    zero: int = const 0;
+    test: bool = gt i zero;
+    br test .body .end;
+.body:
+    acc: int = mul acc i;
+    one: int = const 1;
+    i: int = sub i one;
+    jmp .cond;
+.end:
+    print acc;
+    ret;
+}

@@ -1,0 +1,41 @@
+{
+  "functions": [
+    {
+      "instrs": [
+        {
+          "op": "ret"
+        }
+      ],
+      "name": "helper"
+    },
+    {
+      "instrs": [
+        {
+          "dest": "x",
+          "op": "const",
+          "type": "int",
+          "value": 1
+        },
+        {
+          "funcs": [
+            "helper"
+          ],
+          "op": "call"
+        },
+        {
+          "args": [
+            "x",
+            "x"
+          ],
+          "dest": "y",
+          "op": "add",
+          "type": "int"
+        },
+        {
+          "op": "ret"
+        }
+      ],
+      "name": "main"
+    }
+  ]
+}

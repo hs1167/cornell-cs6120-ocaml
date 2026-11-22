@@ -1,0 +1,9 @@
+@main {
+    x: int = const 4;
+    jmp .a;
+.a:
+.b:
+.c:
+    print x;
+    ret;
+}

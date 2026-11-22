@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+set -euo pipefail
+if (( $# < 2 )); then
+  echo 'Usage : scripts/compare original.json résultat.json [arguments de @main…]' >&2
+  exit 2
+fi
+root=$(cd -- "$(dirname -- "$0")/.." && pwd -P)
+source "$root/env.sh"
+original=$1
+result=$2
+shift 2
+work=$(mktemp -d)
+trap 'rm -rf -- "$work"' EXIT
+brili "$@" < "$original" > "$work/original"
+brili "$@" < "$result" > "$work/result"
+diff -u --label original --label résultat "$work/original" "$work/result"
+echo 'Sorties identiques pour cette entrée.'

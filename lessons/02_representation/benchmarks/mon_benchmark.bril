@@ -1,0 +1,22 @@
+
+@main {
+    x: int = const 4;
+    y: int = const 3;
+
+    total: int = add x y;
+
+    limit: int = const 6;
+    test: bool = gt total limit;
+
+    br test .grand .petit;
+
+.grand:
+    print total;
+    jmp .fin;
+
+.petit:
+    print x;
+
+.fin:
+    ret;
+}

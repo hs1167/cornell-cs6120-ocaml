@@ -1,0 +1,5 @@
+(test
+ (name test_bril)
+ (libraries support yojson)
+ (deps ../examples/add.json)
+ (action (run %{test} %{dep:../examples/add.json})))

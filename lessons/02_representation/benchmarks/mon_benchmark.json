@@ -1,0 +1,85 @@
+{
+  "functions": [
+    {
+      "instrs": [
+        {
+          "dest": "x",
+          "op": "const",
+          "type": "int",
+          "value": 4
+        },
+        {
+          "dest": "y",
+          "op": "const",
+          "type": "int",
+          "value": 3
+        },
+        {
+          "args": [
+            "x",
+            "y"
+          ],
+          "dest": "total",
+          "op": "add",
+          "type": "int"
+        },
+        {
+          "dest": "limit",
+          "op": "const",
+          "type": "int",
+          "value": 6
+        },
+        {
+          "args": [
+            "total",
+            "limit"
+          ],
+          "dest": "test",
+          "op": "gt",
+          "type": "bool"
+        },
+        {
+          "args": [
+            "test"
+          ],
+          "labels": [
+            "grand",
+            "petit"
+          ],
+          "op": "br"
+        },
+        {
+          "label": "grand"
+        },
+        {
+          "args": [
+            "total"
+          ],
+          "op": "print"
+        },
+        {
+          "labels": [
+            "fin"
+          ],
+          "op": "jmp"
+        },
+        {
+          "label": "petit"
+        },
+        {
+          "args": [
+            "x"
+          ],
+          "op": "print"
+        },
+        {
+          "label": "fin"
+        },
+        {
+          "op": "ret"
+        }
+      ],
+      "name": "main"
+    }
+  ]
+}

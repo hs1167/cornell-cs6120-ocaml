@@ -1,0 +1,2 @@
+command = "dune exec ./l02.exe -- {filename}"
+output.analysis = "-"
