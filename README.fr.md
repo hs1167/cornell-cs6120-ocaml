@@ -31,8 +31,6 @@ Ouvrir [la leçon 2](lessons/02_representation/README.md) et [l02.ml](lessons/02
 | [5 · Global Analysis](https://www.cs.cornell.edu/courses/cs6120/2025sp/lesson/5/#tasks) | Calculer les dominateurs, l’arbre et les frontières de dominance. Vérifier les résultats. | [Leçon 5](lessons/05_global/README.md) |
 | [6 · Static Single Assignment](https://www.cs.cornell.edu/courses/cs6120/2025sp/lesson/6/#tasks) | Convertir vers SSA et hors SSA, vérifier la forme et le comportement puis mesurer le surcoût. | [Leçon 6](lessons/06_ssa/README.md) |
 
-Le [carnet de progression](PROGRESS.md) permet de suivre les exercices et d’y consigner ses résultats.
-
 ## Architecture
 
 - [lib/bril.mli](lib/bril.mli) expose le lecteur et le sérialiseur JSON ainsi que les valeurs OCaml qu’ils échangent. Les champs supplémentaires comme les positions ou les champs d’extension sont conservés. [Syntaxe JSON](https://capra.cs.cornell.edu/bril/lang/syntax.html) · [Core Bril](https://capra.cs.cornell.edu/bril/lang/core.html)
